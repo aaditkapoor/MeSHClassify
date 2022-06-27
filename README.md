@@ -1,0 +1,2 @@
+# MeSHClassify
+NLM MeSH terms provides a useful way to map/index research articles, books, audiobooks, citations, and a lot more. Each search query to PubMed corresponds to queries to a MeSH term. Each MeSH term is mapped to a lot of “entry terms”. Medline indexes index each article by reading and understanding the concept. These indexers are highly trained in life sciences and often have an advanced degrees.
