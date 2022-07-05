@@ -69,9 +69,11 @@ class MeshNetwork(pl.LightningModule):
 
 
 st.title("MeSH Classify")
-
+model = MeshNetwork()
 with st.spinner("Loading model..."):
-    model = torch.load(MODEL_PATH)
+    model.load_state_dict(MODEL_PATH)
+    model.eval()
+    print(model)
 
 st.success("Model loaded.")
 user_input = st.text_input("Enter text to be classified.")
