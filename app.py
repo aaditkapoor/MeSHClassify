@@ -10,6 +10,9 @@ from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
 from pytorch_lightning.loggers import TensorBoardLogger
 import streamlit as st
 import torchmetrics
+pwd = os.path.dirname(__file__)
+MODEL_PATH = os.path.join("complete.pt", pwd)
+
 
 BERT_MODEL_NAME = 'albert-base-v1'
 tokenizer = AutoTokenizer.from_pretrained(BERT_MODEL_NAME)
@@ -66,7 +69,7 @@ class MeshNetwork(pl.LightningModule):
 
 
 with st.spinner("Loading model..."):
-    model = torch.load("complete.pt")
+    model = torch.load(MODEL_PATH)
 
 st.success("Model loaded.")
 
