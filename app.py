@@ -99,7 +99,7 @@ if st.button("Classify Text"):
       y_hat = model(input_ids=input_ids.reshape(-1, 512),attention_mask = attention_mask.reshape(-1, 512))
       prob = F.softmax(y_hat, dim=1)
       probs = prob.detach().numpy()
-      my_bar = st.progress(probs[0])
+      my_bar = st.progress(probs[0][0])
 
       predictions = prob.argmax(dim=1)
       st.write(predictions.detach().numpy())
