@@ -94,8 +94,8 @@ if st.button("Classify Text"):
       attention_mask=encoding["attention_mask"].flatten()
 
 
-      y_hat = model(input_ids=input_ids.detach().numpy().reshape(-1, 512), 
-        attention_mask = attention_mask.detach().numpy().reshape(-1, 512))
+      y_hat = model(input_ids=input_ids.reshape(-1, 512), 
+        attention_mask = attention_mask.reshape(-1, 512))
       prob = F.softmax(y_hat, dim=1)
       st.write(prob)
       predictions = prob.argmax(dim=1)
