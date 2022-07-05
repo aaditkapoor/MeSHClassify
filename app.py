@@ -12,7 +12,7 @@ from pytorch_lightning.loggers import TensorBoardLogger
 import streamlit as st
 import torchmetrics
 pwd = os.path.dirname(__file__)
-MODEL_PATH = os.path.join("complete.pt", pwd)
+MODEL_PATH = os.path.join("data.pt", pwd)
 print(MODEL_PATH)
 
 BERT_MODEL_NAME = 'albert-base-v1'
