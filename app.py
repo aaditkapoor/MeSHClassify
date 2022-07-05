@@ -72,7 +72,6 @@ st.title("MeSH Classify")
 
 with st.spinner("Loading model..."):
     model = torch.load(MODEL_PATH)
-    st.write(model)
 
 st.success("Model loaded.")
 user_input = st.text_input("Enter text to be classified.")
