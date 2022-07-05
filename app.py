@@ -68,11 +68,38 @@ class MeshNetwork(pl.LightningModule):
 
 
 
+st.title("MeSH Classify")
 
 with st.spinner("Loading model..."):
     model = torch.load(MODEL_PATH)
+    st.write(model)
 
 st.success("Model loaded.")
+user_input = st.text_input("Enter text to be classified.")
+st.write("Check MeSH categories: [link](https://www.ncbi.nlm.nih.gov/mesh/1000048)")
+st.markdown("***")
 
-if st.button("predict"):
-    st.write("predicted")
+
+if st.button("Classify Text"):
+    if user_input:
+      encoding = tokenizer.encode_plus(
+      user_input,
+      add_special_tokens=True,
+      return_token_type_ids=False,
+      padding="max_length",
+      truncation=True,
+      return_attention_mask=True,
+      return_tensors='pt',
+      )
+      input_ids=encoding["input_ids"].flatten()
+      attention_mask=encoding["attention_mask"].flatten()
+
+
+      y_hat = model(input_ids=input_ids.detach().numpy().reshape(-1, 512), 
+        attention_mask = attention_mask.detach().numpy().reshape(-1, 512))
+      prob = F.softmax(y_hat, dim=1)
+      st.write(prob)
+      predictions = prob.argmax(dim=1)
+      st.write(predictions)
+
+
