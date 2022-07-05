@@ -71,7 +71,7 @@ class MeshNetwork(pl.LightningModule):
 st.title("MeSH Classify")
 model = MeshNetwork()
 with st.spinner("Loading model..."):
-    model.load_state_dict(MODEL_PATH)
+    model.load_state_dict(torch.load(MODEL_PATH))
     model.eval()
     print(model)
 
