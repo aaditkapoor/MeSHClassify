@@ -13,7 +13,7 @@ import streamlit as st
 import torchmetrics
 pwd = os.path.dirname(__file__)
 MODEL_PATH = os.path.join("complete.pt", pwd)
-
+print(MODEL_PATH)
 
 BERT_MODEL_NAME = 'albert-base-v1'
 tokenizer = AutoTokenizer.from_pretrained(BERT_MODEL_NAME)
